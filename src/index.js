@@ -7,7 +7,10 @@ let app = new Vue({
   },
   methods: {
     clear() {
-      this.name = "";
+      console.log(this);
+      for (let i = 0; i <= 5; i++) {
+        this.name = i;
+      }
     }
   },
   computed: {

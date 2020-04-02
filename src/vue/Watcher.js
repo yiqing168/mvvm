@@ -1,5 +1,8 @@
 import resolveFn from "./resolveFn";
 import Dep from "./Dep";
+import { queueWatcher } from "./scheduler";
+
+let uid = 0;
 
 export default class Watcher {
   constructor(vm, expr, cb) {
@@ -7,6 +10,7 @@ export default class Watcher {
     this.expr = expr;
     this.cb = cb;
     this.value = this.get();
+    this.id = uid++;
   }
   get() {
     Dep.target = this;
@@ -15,6 +19,10 @@ export default class Watcher {
     return value;
   }
   update() {
+    // 观察者队列
+    queueWatcher(this);
+  }
+  run() {
     let newValue = resolveFn.getVal(this.vm, this.expr);
     if (this.value !== newValue) {
       this.cb(newValue);

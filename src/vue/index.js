@@ -51,7 +51,7 @@ export default class Vue {
     Object.keys(this.$methods).forEach(key => {
       Object.defineProperty(this, key, {
         get() {
-          return this.$methods[key].apply(this);
+          return this.$methods[key];
         }
       });
     });
