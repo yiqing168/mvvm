@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue 双向绑定</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="name" />
+      <p>{{info}}</p>
+      <p>{{name}}</p>
+      <button v-on:click="clear">清空</button>
+    </div>
+  </body>
+</html>
